@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 
 export const Sender = () => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
-  const [pc, setPC] = useState<RTCPeerConnection | null>(null);
   const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -28,7 +27,6 @@ export const Sender = () => {
       return;
     }
     const newPC = new RTCPeerConnection();
-    setPC(newPC);
 
     newPC.onicecandidate = (event) => {
       if (event.candidate) {
